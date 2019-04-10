@@ -1,4 +1,4 @@
-package com.rentrecorder.app;
+package com.rentrecorder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +10,4 @@ public class RentRecorderMainApp {
 		System.out.println("Starting springboot application");
 		SpringApplication.run(RentRecorderMainApp.class, strings);
 	}
-	
-	
 }
