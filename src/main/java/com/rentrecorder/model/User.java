@@ -7,17 +7,28 @@ import javax.persistence.Id;
 public class User {
 
 	@Id
-	private int phoneNumber;
+	private String phoneNumber;
 	
 	private String userName;
 	
 	private String name;
+	
+	public User() {
+		super();
+	}
 
-	public int getPhoneNumber() {
+	public User(String phoneNumber, String userName, String name) {
+		super();
+		this.phoneNumber = phoneNumber;
+		this.userName = userName;
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

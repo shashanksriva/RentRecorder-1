@@ -2,16 +2,15 @@ package com.rentrecorder.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RentRecord {
 	
 	@Id
-	private int phoneNumber;
+	private String id;
 	
 	private String name;
-	
-	private String floor;
 	
 	private int month;
 	
@@ -25,26 +24,27 @@ public class RentRecord {
 	
 	private float total;
 	
+	@ManyToOne
 	private User user;
 
-	public RentRecord(int phoneNumber, String name, String floor, int rent, float electricityPerUnit,
-			int electricityCharge, float total) {
+	public RentRecord(String id, String name, int rent, float electricityPerUnit,
+			int electricityCharge, float total, String phoneNumber) {
 		super();
-		this.phoneNumber = phoneNumber;
+		this.id = id;
 		this.name = name;
-		this.floor = floor;
 		this.rent = rent;
 		this.electricityPerUnit = electricityPerUnit;
 		this.electricityCharge = electricityCharge;
 		this.total = total;
+		this.user = new User(phoneNumber, "shashanksri", "Shashank Srivastava");
 	}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
+	public String getId() {
+		return id;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -53,14 +53,6 @@ public class RentRecord {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getFloor() {
-		return floor;
-	}
-
-	public void setFloor(String floor) {
-		this.floor = floor;
 	}
 
 	public int getMonth() {
@@ -111,8 +103,16 @@ public class RentRecord {
 		this.total = total;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "RentRecord [phoneNumber=" + phoneNumber + ", name=" + name + "]";
+		return "RentRecord [phoneNumber=" + id + ", name=" + name + "]";
 	}
 }

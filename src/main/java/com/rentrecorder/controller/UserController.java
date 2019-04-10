@@ -18,6 +18,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/")
+	public String defaultMessage() {
+		return "You are in Rent recorder app";
+	}
+
+	@RequestMapping("/sayhi")
+	public String sayHello() {
+		System.out.println("Calling hello()");
+		return "Hi";
+	}
+	
 	@RequestMapping("/users")
 	public List<String> getUsers() {
 		return userService.getUsersList();

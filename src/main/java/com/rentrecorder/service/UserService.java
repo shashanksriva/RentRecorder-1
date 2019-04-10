@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.rentrecorder.model.RentRecord;
 import com.rentrecorder.model.User;
 import com.rentrecorder.repository.UserRepository;
 
@@ -27,9 +26,9 @@ public class UserService {
 	}
 	
 	public List<User> getAllRecords() {
-		List<User> rentRecordList = new ArrayList<User>();
-		userRepository.findAll().forEach(rentRecordList::add);
-		return rentRecordList;
+		List<User> userRecordList = new ArrayList<User>();
+		userRepository.findAll().forEach(userRecordList::add);
+		return userRecordList;
 	}
 	
 	public void addRecord(User user) {
