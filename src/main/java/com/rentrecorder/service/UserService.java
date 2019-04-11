@@ -12,13 +12,14 @@ import com.rentrecorder.repository.UserRepository;
 @Service
 public class UserService {
 
-	private List<String> userList = new ArrayList<>(Arrays.asList("Krishna", "Balram", "Mathura", "Vrundavan"));
+	List<User> userList = new ArrayList<>(Arrays.asList(new User("Krishna", "Balram", "Mathura"), new User("Radha", "Lalita", "Vrundavan")));
 	
 	private UserRepository userRepository;
 	
-	public List<String> getUsersList(){
-		
-		return userList;
+	public List<User> getUsersList(){
+		List<User> usrList = new ArrayList<>();
+		userRepository.findAll().forEach(usrList::add);
+		return usrList;
 	}
 	
 	public User getRecord(String id) {

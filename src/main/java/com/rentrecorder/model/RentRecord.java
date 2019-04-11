@@ -35,7 +35,7 @@ public class RentRecord {
 		this.rent = rent;
 		this.electricityPerUnit = electricityPerUnit;
 		this.electricityCharge = electricityCharge;
-		this.total = total;
+		this.total = rent + electricityCharge * electricityPerUnit + 200; //water charges are 200
 		this.user = new User(phoneNumber, "shashanksri", "Shashank Srivastava");
 	}
 
