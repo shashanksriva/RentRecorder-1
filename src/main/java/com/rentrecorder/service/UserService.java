@@ -1,25 +1,25 @@
 package com.rentrecorder.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rentrecorder.model.RentRecord;
 import com.rentrecorder.model.User;
 import com.rentrecorder.repository.UserRepository;
 
 @Service
 public class UserService {
 
-	private List<String> userList = new ArrayList<>(Arrays.asList("Krishna", "Balram", "Mathura", "Vrundavan"));
-	
+	//List<User> userList = new ArrayList<>(Arrays.asList(new User("Krishna", "Balram", "Mathura"), new User("Radha", "Lalita", "Vrundavan")));
+	@Autowired
 	private UserRepository userRepository;
 	
-	public List<String> getUsersList(){
-		
-		return userList;
+	public List<User> getUsersList(){
+		List<User> usrList = new ArrayList<>();
+		userRepository.findAll().forEach(usrList::add);
+		return usrList;
 	}
 	
 	public User getRecord(String id) {
@@ -27,9 +27,9 @@ public class UserService {
 	}
 	
 	public List<User> getAllRecords() {
-		List<User> rentRecordList = new ArrayList<User>();
-		userRepository.findAll().forEach(rentRecordList::add);
-		return rentRecordList;
+		List<User> userRecordList = new ArrayList<User>();
+		userRepository.findAll().forEach(userRecordList::add);
+		return userRecordList;
 	}
 	
 	public void addRecord(User user) {

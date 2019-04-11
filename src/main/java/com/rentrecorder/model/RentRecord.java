@@ -2,16 +2,15 @@ package com.rentrecorder.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class RentRecord {
 	
 	@Id
-	private int phoneNumber;
+	private int id;
 	
 	private String name;
-	
-	private String floor;
 	
 	private int month;
 	
@@ -21,30 +20,35 @@ public class RentRecord {
 	
 	private float electricityPerUnit;
 	
-	private int electricityCharge;
+	private int electricityUnits;
 	
 	private float total;
 	
+	@ManyToOne
 	private User user;
+	
+	public RentRecord() {
+		
+	}
 
-	public RentRecord(int phoneNumber, String name, String floor, int rent, float electricityPerUnit,
-			int electricityCharge, float total) {
+	public RentRecord(int id, String name, int rent, float electricityPerUnit,
+			int electricityUnits, float total, int phoneNumber) {
 		super();
-		this.phoneNumber = phoneNumber;
+		this.id = id;
 		this.name = name;
-		this.floor = floor;
 		this.rent = rent;
 		this.electricityPerUnit = electricityPerUnit;
-		this.electricityCharge = electricityCharge;
-		this.total = total;
+		this.electricityUnits = electricityUnits;
+		this.total = rent + electricityUnits * electricityPerUnit + 200; //water charges are 200
+		this.user = new User(phoneNumber, "", "");
 	}
 
-	public int getPhoneNumber() {
-		return phoneNumber;
+	public int getId() {
+		return id;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -53,14 +57,6 @@ public class RentRecord {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getFloor() {
-		return floor;
-	}
-
-	public void setFloor(String floor) {
-		this.floor = floor;
 	}
 
 	public int getMonth() {
@@ -95,12 +91,12 @@ public class RentRecord {
 		this.electricityPerUnit = electricityPerUnit;
 	}
 
-	public int getElectricityCharge() {
-		return electricityCharge;
+	public int getElectricityUnits() {
+		return electricityUnits;
 	}
 
-	public void setElectricityCharge(int electricityCharge) {
-		this.electricityCharge = electricityCharge;
+	public void setElectricityUnit(int electricityCharge) {
+		this.electricityUnits = electricityCharge;
 	}
 
 	public float getTotal() {
@@ -111,8 +107,16 @@ public class RentRecord {
 		this.total = total;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "RentRecord [phoneNumber=" + phoneNumber + ", name=" + name + "]";
+		return "RentRecord [phoneNumber=" + id + ", name=" + name + "]";
 	}
 }

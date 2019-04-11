@@ -18,8 +18,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("/")
+	public String defaultMessage() {
+		return "You are in Rent recorder app";
+	}
+
+	@RequestMapping("/sayhi")
+	public String sayHello() {
+		System.out.println("Calling hello()");
+		return "Hi";
+	}
+	
 	@RequestMapping("/users")
-	public List<String> getUsers() {
+	public List<User> getUsers() {
 		return userService.getUsersList();
 	}
 	
@@ -30,6 +41,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users")
 	public void addUser(@RequestBody User user) {
+		System.out.println("User :: " + user);
 		userService.addRecord(user);
 	}
 	

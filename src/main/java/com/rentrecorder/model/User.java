@@ -12,6 +12,17 @@ public class User {
 	private String userName;
 	
 	private String name;
+	
+	public User() {
+		super();
+	}
+
+	public User(int phoneNumber, String userName, String name) {
+		super();
+		this.phoneNumber = phoneNumber;
+		this.userName = userName;
+		this.name = name;
+	}
 
 	public int getPhoneNumber() {
 		return phoneNumber;
