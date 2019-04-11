@@ -15,11 +15,11 @@ public class RentRecordService {
 	@Autowired
 	private RentRecordRepository rentRecordRepo;
 
-	public RentRecord getRecord(String id) {
+	public RentRecord getRecord(int id) {
 		return rentRecordRepo.findById(id).orElse(null);
 	}
 	
-	public List<RentRecord> getAllRecords(String id) {
+	public List<RentRecord> getAllRecords(int id) {
 		List<RentRecord> rentRecordList = new ArrayList<RentRecord>();
 		rentRecordRepo.findByUserPhoneNumber(id).forEach(rentRecordList::add);
 		return rentRecordList;
@@ -29,7 +29,7 @@ public class RentRecordService {
 		rentRecordRepo.save(rentRecord);
 	}
 	
-	public void deleteRecord(String id) {
+	public void deleteRecord(int id) {
 		rentRecordRepo.deleteById(id);
 	}
 

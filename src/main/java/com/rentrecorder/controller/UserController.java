@@ -41,6 +41,7 @@ public class UserController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users")
 	public void addUser(@RequestBody User user) {
+		System.out.println("User :: " + user);
 		userService.addRecord(user);
 	}
 	

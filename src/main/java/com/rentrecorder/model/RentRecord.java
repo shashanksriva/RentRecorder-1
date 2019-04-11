@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 public class RentRecord {
 	
 	@Id
-	private String id;
+	private int id;
 	
 	private String name;
 	
@@ -20,30 +20,34 @@ public class RentRecord {
 	
 	private float electricityPerUnit;
 	
-	private int electricityCharge;
+	private int electricityUnits;
 	
 	private float total;
 	
 	@ManyToOne
 	private User user;
+	
+	public RentRecord() {
+		
+	}
 
-	public RentRecord(String id, String name, int rent, float electricityPerUnit,
-			int electricityCharge, float total, String phoneNumber) {
+	public RentRecord(int id, String name, int rent, float electricityPerUnit,
+			int electricityUnits, float total, int phoneNumber) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.rent = rent;
 		this.electricityPerUnit = electricityPerUnit;
-		this.electricityCharge = electricityCharge;
-		this.total = rent + electricityCharge * electricityPerUnit + 200; //water charges are 200
-		this.user = new User(phoneNumber, "shashanksri", "Shashank Srivastava");
+		this.electricityUnits = electricityUnits;
+		this.total = rent + electricityUnits * electricityPerUnit + 200; //water charges are 200
+		this.user = new User(phoneNumber, "", "");
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setPhoneNumber(String id) {
+	public void setPhoneNumber(int id) {
 		this.id = id;
 	}
 
@@ -87,12 +91,12 @@ public class RentRecord {
 		this.electricityPerUnit = electricityPerUnit;
 	}
 
-	public int getElectricityCharge() {
-		return electricityCharge;
+	public int getElectricityUnits() {
+		return electricityUnits;
 	}
 
-	public void setElectricityCharge(int electricityCharge) {
-		this.electricityCharge = electricityCharge;
+	public void setElectricityUnit(int electricityCharge) {
+		this.electricityUnits = electricityCharge;
 	}
 
 	public float getTotal() {

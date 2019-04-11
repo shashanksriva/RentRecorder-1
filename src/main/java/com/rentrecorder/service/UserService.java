@@ -1,9 +1,9 @@
 package com.rentrecorder.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rentrecorder.model.User;
@@ -12,8 +12,8 @@ import com.rentrecorder.repository.UserRepository;
 @Service
 public class UserService {
 
-	List<User> userList = new ArrayList<>(Arrays.asList(new User("Krishna", "Balram", "Mathura"), new User("Radha", "Lalita", "Vrundavan")));
-	
+	//List<User> userList = new ArrayList<>(Arrays.asList(new User("Krishna", "Balram", "Mathura"), new User("Radha", "Lalita", "Vrundavan")));
+	@Autowired
 	private UserRepository userRepository;
 	
 	public List<User> getUsersList(){

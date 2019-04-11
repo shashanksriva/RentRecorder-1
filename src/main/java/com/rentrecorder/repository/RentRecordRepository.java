@@ -6,10 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.rentrecorder.model.RentRecord;
 
-public interface RentRecordRepository extends CrudRepository<RentRecord, String> {
+public interface RentRecordRepository extends CrudRepository<RentRecord, Integer> {
 	
 	List<RentRecord> findByName(String name);
 	
-	List<RentRecord> findByUserPhoneNumber(String id);
+	List<RentRecord> findByUserPhoneNumber(int id);
 
 }
