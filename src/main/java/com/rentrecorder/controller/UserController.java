@@ -3,10 +3,12 @@ package com.rentrecorder.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.rentrecorder.model.User;
 import com.rentrecorder.service.UserService;
@@ -21,6 +23,23 @@ public class UserController {
 	@RequestMapping("/")
 	public String defaultMessage() {
 		return "You are in Rent recorder app";
+	}
+	
+	@RequestMapping("/welcome")
+	public ModelAndView welcome(ModelMap model) {
+		System.out.println("You are in Rent recorder Welcome");
+		model.put("message", "Hello Shashank");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("welcome");
+		return mv;
+	}
+	
+	@RequestMapping("/home")
+	public ModelAndView getHome(ModelMap model) {
+		System.out.println("You are in Rent recorder Home");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home");
+		return mv;
 	}
 
 	@RequestMapping("/sayhi")
