@@ -26,6 +26,7 @@ public class RentRecordService {
 	}
 	
 	public void addRecord(RentRecord rentRecord) {
+		calculateTotal(rentRecord);
 		rentRecordRepo.save(rentRecord);
 	}
 	
@@ -33,4 +34,10 @@ public class RentRecordService {
 		rentRecordRepo.deleteById(id);
 	}
 
+	public void calculateTotal(RentRecord rr) {
+		float electricityAndWater = rr.getElectricityPerUnit() * rr.getElectricityUnits() + rr.getWaterCharge();
+		float total = rr.getRent() + electricityAndWater;
+		rr.setElectricityAndWater(electricityAndWater);
+		rr.setTotal(total);
+	}
 }

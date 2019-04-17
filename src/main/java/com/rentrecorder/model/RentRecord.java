@@ -24,6 +24,10 @@ public class RentRecord {
 	
 	private float total;
 	
+	private int waterCharge;
+	
+	private float electricityAndWater;
+	
 	@ManyToOne
 	private User user;
 	
@@ -32,15 +36,15 @@ public class RentRecord {
 	}
 
 	public RentRecord(int id, String name, int rent, float electricityPerUnit,
-			int electricityUnits, float total, int phoneNumber) {
+			int electricityUnits, float total, int phoneNumber, int waterCharge) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.rent = rent;
 		this.electricityPerUnit = electricityPerUnit;
 		this.electricityUnits = electricityUnits;
-		this.total = rent + electricityUnits * electricityPerUnit + 200; //water charges are 200
-		this.user = new User(phoneNumber, "", "");
+		this.total = rent + electricityUnits * electricityPerUnit; //water charges are 200
+		this.waterCharge = waterCharge;
 	}
 
 	public int getId() {
@@ -113,6 +117,22 @@ public class RentRecord {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public int getWaterCharge() {
+		return waterCharge;
+	}
+
+	public void setWaterCharge(int waterCharge) {
+		this.waterCharge = waterCharge;
+	}
+
+	public float getElectricityAndWater() {
+		return electricityAndWater;
+	}
+
+	public void setElectricityAndWater(float electricityAndWater) {
+		this.electricityAndWater = electricityAndWater;
 	}
 
 	@Override

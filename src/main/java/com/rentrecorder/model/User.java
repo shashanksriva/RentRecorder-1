@@ -3,7 +3,10 @@ package com.rentrecorder.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
+@DynamicUpdate
 public class User {
 
 	@Id

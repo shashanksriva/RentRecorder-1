@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rentrecorder.model.User;
 import com.rentrecorder.service.UserService;
+import com.rentrecorder.util.Util;
 
 
 @RestController
@@ -21,25 +22,21 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/")
-	public String defaultMessage() {
-		return "You are in Rent recorder app";
+	public ModelAndView defaultMessage() {
+		System.out.println("You are in Rent recorder app");
+		return Util.getView("login");
 	}
 	
 	@RequestMapping("/welcome")
 	public ModelAndView welcome(ModelMap model) {
 		System.out.println("You are in Rent recorder Welcome");
-		model.put("message", "Hello Shashank");
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("welcome");
-		return mv;
+		return Util.getView("welcome");
 	}
 	
 	@RequestMapping("/home")
 	public ModelAndView getHome(ModelMap model) {
 		System.out.println("You are in Rent recorder Home");
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home");
-		return mv;
+		return Util.getView("home");
 	}
 
 	@RequestMapping("/sayhi")
